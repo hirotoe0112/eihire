@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+.hero-section {
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.btn {
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Primary button - 主要なアクション */
+.btn-primary {
+    background: #2563eb;
+    border-color: #1d4ed8;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    border-color: #1e40af;
+}
+
+/* Secondary button - 二次的なアクション */
+.btn-secondary {
+    background: #3a3a3a;
+    border-color: #505050;
+}
+
+.btn-secondary:hover {
+    background: #4a4a4a;
+    border-color: #606060;
+}
+
+/* Success button - 成功・継続アクション */
+.btn-success {
+    background: #16a34a;
+    border-color: #15803d;
+}
+
+.btn-success:hover {
+    background: #15803d;
+    border-color: #166534;
+}
+
+/* Warning button - 注意が必要なアクション */
+.btn-warning {
+    background: #ea580c;
+    border-color: #dc2626;
+}
+
+.btn-warning:hover {
+    background: #dc2626;
+    border-color: #b91c1c;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#puzzle-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: visible;
+}
+
+.puzzle-piece {
+    position: absolute;
+    cursor: grab;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.puzzle-piece:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.puzzle-piece.dragging {
+    cursor: grabbing;
+    z-index: 10;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.puzzle-piece.correct {
+    cursor: default;
+    border: 2px solid #4a4a4a;
+    animation: correctPlacement 0.5s ease;
+}
+
+@keyframes correctPlacement {
+    0% { transform: scale(1.2); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.completion-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.completion-content {
+    background: #2a2a2a;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #404040;
+    max-width: 800px;
+    width: 95%;
+}
+
+.completed-image {
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #505050;
+}
+
+.completion-message h3 {
+    color: #f0f0f0;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.completion-message p {
+    color: #c0c0c0;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.completion-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.settings-container {
+    background: #2a2a2a;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #404040;
+}
+
+.setting-item {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.setting-item label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.setting-select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    background: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #505050;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.setting-select:focus {
+    outline: none;
+    border-color: #606060;
+    background: #4a4a4a;
+}
+
+.settings-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #puzzle-container {
+        height: 500px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        padding: 20px;
+    }
+    
+    .hero-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .completed-image {
+        max-width: 400px;
+        max-height: 400px;
+    }
+    
+    .completion-content {
+        padding: 20px;
+        max-width: 500px;
+    }
+    
+    .settings-container {
+        padding: 20px;
+    }
+    
+    .hero-buttons,
+    .settings-buttons,
+    .completion-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+}

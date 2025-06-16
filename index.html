@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>えいひれパズル</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="start-screen" class="screen active">
+            <div class="hero-section">
+                <img src="assets/images/logos/logo.png" alt="えいひれパズル" class="hero-image">
+                <h1>えいひれパズル</h1>
+                <div class="hero-buttons">
+                    <button id="start-btn" class="btn btn-primary">スタート</button>
+                    <button id="settings-btn" class="btn btn-secondary">設定</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <h2>えいひれパズル</h2>
+                <div class="header-buttons">
+                    <button id="home-btn" class="btn btn-secondary">ホーム</button>
+                    <button id="restart-btn" class="btn btn-warning">リスタート</button>
+                </div>
+            </div>
+            <div class="game-container">
+                <div id="puzzle-container"></div>
+            </div>
+            <div id="completion-message" class="completion-message hidden">
+                <div class="completion-content">
+                    <img id="completed-image" src="" alt="完成画像" class="completed-image">
+                    <h3>おめでとうございます！</h3>
+                    <p>パズルが完成しました！</p>
+                    <div class="completion-buttons">
+                        <button id="completion-home-btn" class="btn btn-secondary">ホーム</button>
+                        <button id="play-again-btn" class="btn btn-success">もう一度プレイ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings-screen" class="screen">
+            <div class="settings-container">
+                <h2>設定</h2>
+                <div class="setting-item">
+                    <label for="piece-count">ピース数:</label>
+                    <select id="piece-count" class="setting-select">
+                        <option value="16" selected>16ピース (4×4)</option>
+                        <option value="24">24ピース (6×4)</option>
+                        <option value="36">36ピース (6×6)</option>
+                        <option value="48">48ピース (8×6)</option>
+                        <option value="64">64ピース (8×8)</option>
+                    </select>
+                </div>
+                <div class="settings-buttons">
+                    <button id="settings-back-btn" class="btn btn-secondary">戻る</button>
+                    <button id="settings-save-btn" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
