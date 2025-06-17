@@ -14,6 +14,7 @@
                 <h1>えいひれパズル</h1>
                 <div class="hero-buttons">
                     <button id="start-btn" class="btn btn-primary">スタート</button>
+                    <button id="gallery-btn" class="btn btn-secondary">ギャラリー</button>
                     <button id="settings-btn" class="btn btn-secondary">設定</button>
                 </div>
             </div>
@@ -43,6 +44,17 @@
             </div>
         </div>
 
+        <div id="gallery-screen" class="screen">
+            <div class="gallery-container">
+                <h2>ギャラリー</h2>
+                <div id="gallery-grid" class="gallery-grid">
+                </div>
+                <div class="gallery-buttons">
+                    <button id="gallery-back-btn" class="btn btn-secondary">戻る</button>
+                </div>
+            </div>
+        </div>
+
         <div id="settings-screen" class="screen">
             <div class="settings-container">
                 <h2>設定</h2>
@@ -60,6 +72,13 @@
                     <button id="settings-back-btn" class="btn btn-secondary">戻る</button>
                     <button id="settings-save-btn" class="btn btn-primary">保存</button>
                 </div>
+            </div>
+        </div>
+
+        <div id="image-modal" class="image-modal hidden">
+            <div class="modal-content">
+                <img id="modal-image" src="" alt="拡大画像" class="modal-image">
+                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
             </div>
         </div>
     </div>

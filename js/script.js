@@ -22,27 +22,44 @@ class BatimorphicPuzzle {
     
     bindEvents() {
         const startBtn = document.getElementById('start-btn');
+        const galleryBtn = document.getElementById('gallery-btn');
         const settingsBtn = document.getElementById('settings-btn');
         const homeBtn = document.getElementById('home-btn');
         const restartBtn = document.getElementById('restart-btn');
         const playAgainBtn = document.getElementById('play-again-btn');
         const completionHomeBtn = document.getElementById('completion-home-btn');
+        const galleryBackBtn = document.getElementById('gallery-back-btn');
         const settingsBackBtn = document.getElementById('settings-back-btn');
         const settingsSaveBtn = document.getElementById('settings-save-btn');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const imageModal = document.getElementById('image-modal');
         
         startBtn.addEventListener('click', () => this.startGame());
+        galleryBtn.addEventListener('click', () => this.showGallery());
         settingsBtn.addEventListener('click', () => this.showSettings());
         homeBtn.addEventListener('click', () => this.goHome());
         restartBtn.addEventListener('click', () => this.restartGame());
         playAgainBtn.addEventListener('click', () => this.restartGame());
         completionHomeBtn.addEventListener('click', () => this.goHome());
+        galleryBackBtn.addEventListener('click', () => this.goHome());
         settingsBackBtn.addEventListener('click', () => this.goHome());
         settingsSaveBtn.addEventListener('click', () => this.saveSettings());
+        modalCloseBtn.addEventListener('click', () => this.closeModal());
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                this.closeModal();
+            }
+        });
     }
 
     goHome() {
         this.showScreen('start-screen');
         this.hideCompletionMessage();
+    }
+
+    showGallery() {
+        this.showScreen('gallery-screen');
+        this.loadGallery();
     }
 
     showSettings() {
@@ -423,6 +440,37 @@ class BatimorphicPuzzle {
     
     hideCompletionMessage() {
         document.getElementById('completion-message').classList.add('hidden');
+    }
+
+    loadGallery() {
+        const galleryGrid = document.getElementById('gallery-grid');
+        galleryGrid.innerHTML = '';
+        
+        this.images.forEach((imageSrc, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = `パズル画像 ${index + 1}`;
+            img.addEventListener('click', () => this.showImageModal(imageSrc));
+            
+            galleryItem.appendChild(img);
+            galleryGrid.appendChild(galleryItem);
+        });
+    }
+
+    showImageModal(imageSrc) {
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        
+        modalImage.src = imageSrc;
+        modal.classList.remove('hidden');
+    }
+
+    closeModal() {
+        const modal = document.getElementById('image-modal');
+        modal.classList.add('hidden');
     }
 }
 
