@@ -4,7 +4,7 @@ const PUZZLE_CONFIG = {
         'assets/images/puzzles/1.jpg',
         'assets/images/puzzles/2.jpg',
         'assets/images/puzzles/3.jpg',
-        //'assets/images/puzzles/4.jpg',
+        'assets/images/puzzles/4.jpg',
         //'assets/images/puzzles/5.jpg',
         'assets/images/puzzles/6.jpg',
         //'assets/images/puzzles/7.jpg',
